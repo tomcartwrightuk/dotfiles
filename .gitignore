@@ -1,0 +1,5 @@
+*.swp
+commands.txt
+vim/swap/*
+vim/bundle/**/*
+bash_exports
