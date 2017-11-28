@@ -126,8 +126,6 @@ alias grepall="grep -r -i -n"
 # COMMAND ALIASES
 alias ghost="/usr/local/bin/gs"
 alias cls='clear sc'
-alias vi="mvim -v"
-alias vim="mvim -v"
 alias sudovim="sudo mvim -v"
 alias vimdiff="mvim -v"
 alias view="mvim -v"
@@ -149,6 +147,12 @@ alias kubep='kubectl --context=$PROD_CON'
 alias kubeci='kubectl --context=$CI_CON'
 alias kube='kubectl'
 alias devbox='mosh -p 60000 tom.cartwright@devbox'
+
+# MAC SPECIFIC
+if [[ $(uname) == "Darwin" ]]; then
+  alias vi="mvim -v"
+  alias vim="mvim -v"
+fi
 
 # Golang commands
 symgo() {

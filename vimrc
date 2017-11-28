@@ -13,7 +13,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'rentalcustard/pbcopy.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'ervandew/supertab'
-" Plugin 'scrooloose/syntastic'
 Plugin 'Trevoke/ultisnips-rspec'
 Plugin 'SirVer/ultisnips'
 Plugin 'rking/ag.vim'
@@ -36,14 +35,14 @@ Plugin 'mattn/webapi-vim'
 Plugin 'sotte/presenting.vim'
 Plugin 'vim-scripts/SyntaxRange'
 Plugin 'elzr/vim-json'
-" Plugin 'pangloss/vim-javascript'
-Plugin 'ensime/ensime-vim'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'janko-m/vim-test'
-" Plugin 'shumphrey/fugitive-gitlab'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'godlygeek/tabular'
 Plugin 'w0rp/ale'
+if executable('scala')
+  Plugin 'ensime/ensime-vim'
+endif
 
 call vundle#end()            " required
 filetype plugin indent on    " required
