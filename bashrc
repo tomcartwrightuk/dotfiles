@@ -146,7 +146,8 @@ alias kubeps="kubectl get pod --all-namespaces"
 alias kubep='kubectl --context=$PROD_CON'
 alias kubeci='kubectl --context=$CI_CON'
 alias kube='kubectl'
-alias devbox='mosh -p 60000 tom.cartwright@devbox'
+alias moshdev="mosh -p 60000 tecartwright@`gcloud compute instances list | grep tom-dev-box  | awk '{print $5}'`"
+alias sshbox="ssh tecartwright@`gcloud compute instances list | grep tom-dev-box  | awk '{print $5}'`"
 
 # MAC SPECIFIC
 if [[ $(uname) == "Darwin" ]]; then
