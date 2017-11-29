@@ -154,7 +154,7 @@ if [[ $(uname) == "Darwin" ]]; then
 
 
   if command_exists gcloud; then
-    local dev_box_name = 'tom-dev-box'
+    dev_box_name = 'tom-dev-box'
     alias moshdev="mosh -p 60000 tecartwright@`gcloud compute instances list | grep $dev_box_name | awk '{print $5}'`"
     alias sshbox="ssh tecartwright@`gcloud compute instances list | grep $dev_box_name | awk '{print $5}'`"
   fi
