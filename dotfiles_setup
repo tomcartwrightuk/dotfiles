@@ -5,4 +5,9 @@ mv ~/.bashrc ~/.bashrc-archive
 ln -s ~/dotfiles/vim ~/.vim
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/bashrc ~/.bashrc
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+
+if [[ $(uname) == "Darwin" ]]; then
+  ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+else
+  ln -s ~/dotfiles/remote-tmux.conf ~/.tmux.conf
+fi
