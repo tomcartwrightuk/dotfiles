@@ -40,6 +40,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'godlygeek/tabular'
 Plugin 'w0rp/ale'
+Plugin 'gerrard00/vim-mocha-only'
 if executable('scala')
   Plugin 'ensime/ensime-vim'
 endif
@@ -137,12 +138,6 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-" Underline the insert mode
-hi clear CursorLine
-hi CursorLine gui=underline cterm=underline
-autocmd InsertEnter * set cul
-autocmd InsertLeave * set nocul
-
 let s:os = system("uname")
 if s:os =~ "Darwin"
   let g:Grep_Xargs_Options='-0'
@@ -222,6 +217,8 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+" Add .only to a mocha test
+nnoremap <Leader>mo :MochaOnlyToggle<CR>
 
 " Moving lines up and down alt-j and alt-k
 nnoremap ∆ :m .+1<CR>==
