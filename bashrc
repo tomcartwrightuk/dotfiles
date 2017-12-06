@@ -87,7 +87,12 @@ function proml {
   local       WHITE="\[\033[1;37m\]"
   local  LIGHT_GRAY="\[\033[0;37m\]"
   local     DEFAULT="\[\033[0m\]"
-  PS1="\[\033[01;33m\]\u@\h$BLUE\$(parse_git_branch)$GREEN:\w\[\033[01;35m\]$ $DEFAULT"
+
+  if [[ $(uname) == "Darwin" ]]; then
+    PS1="💻 $BLUE\$(parse_git_branch)$GREEN:\w\[\033[01;35m\]$ $DEFAULT"
+  else
+    PS1="👨‍💻 $BLUE\$(parse_git_branch)$GREEN:\w\[\033[01;35m\]$ $DEFAULT"
+  fi
 }
 proml
 
@@ -154,7 +159,7 @@ if [[ $(uname) == "Darwin" ]]; then
 
 
   if command_exists gcloud; then
-    dev_box_name='tom-dev-box'
+    dev_box_name='tom-dev1'
     alias moshdev="mosh -p 60000 tecartwright@(gcloud compute instances list | grep $dev_box_name | awk '{print $5}')"
     alias sshbox="ssh tecartwright@(gcloud compute instances list | grep $dev_box_name | awk '{print $5}')"
   fi
