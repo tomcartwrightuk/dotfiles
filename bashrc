@@ -153,15 +153,17 @@ alias kubeci='kubectl --context=$CI_CON'
 alias kube='kubectl'
 
 # MAC SPECIFIC
+dev_server_ip() {
+  local dev_box_name='tom-dev1'
+  gcloud compute instances list | grep $dev_box_name | awk '{print $5}'
+}
+
 if [[ $(uname) == "Darwin" ]]; then
   alias vi="mvim -v"
   alias vim="mvim -v"
-
-
   if command_exists gcloud; then
-    dev_box_name='tom-dev1'
-    alias moshdev="mosh -p 60000 tecartwright@(gcloud compute instances list | grep $dev_box_name | awk '{print $5}')"
-    alias sshbox="ssh tecartwright@(gcloud compute instances list | grep $dev_box_name | awk '{print $5}')"
+    alias moshdev='mosh -p 60000 tecartwright@$(dev_server_ip)'
+    alias sshbox='ssh tecartwright@$(dev_server_ip)'
   fi
 fi
 
