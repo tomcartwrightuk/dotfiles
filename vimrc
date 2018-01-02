@@ -169,7 +169,7 @@ set statusline+=%*
 let g:ale_fix_on_save = 1
 
 " If in an ovo org use different linting
-let j3tdir = matchstr(getcwd(), 'ovo-gitlab')
+let j3tdir = matchstr(getcwd(), 'ovo')
 if empty(j3tdir)
   set tabstop=2 "set tabs to two spaces
   set shiftwidth=2 "indent width for autoindent
