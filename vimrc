@@ -174,15 +174,12 @@ if empty(j3tdir)
   set tabstop=2 "set tabs to two spaces
   set shiftwidth=2 "indent width for autoindent
   " Loading standardjs linter
-  let g:ale_fixers = {
-  \   'javascript': ['standard'],
-  \}
-
-  let g:ale_fixers = {
-  \   'javascript': ['standard'],
-  \}
+  let g:ale_fixers = {'javascript': ['prettier_standard']}
+  let g:ale_linters = {'javascript': ['']}
+  let g:ale_fix_on_save = 1
 else
   " Loading just3things linter
+  let g:ale_javascript_eslint_use_global = 1
   let g:ale_linters = {
   \   'javascript': ['eslint'],
   \}
@@ -190,14 +187,8 @@ else
   let g:ale_fixers = {
   \   'javascript': ['eslint'],
   \}
-  " Display 4 spaces as 2 spaces see: https://stackoverflow.com/a/13945199
-  set conceallevel=1
-  syntax match spaces /  / conceal cchar= 
-  set concealcursor=nvi
-  set conceallevel=1
-  autocmd BufNewFile,BufRead *.js syntax match spaces /  / conceal cchar= 
-  set tabstop=2 "set tabs to 4 spaces
-  set shiftwidth=2 "indent width for autoindent
+  set tabstop=4 "set tabs to 4 spaces
+  set shiftwidth=4 "indent width for autoindent
 endif
 
 " Testing!

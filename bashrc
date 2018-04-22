@@ -89,9 +89,9 @@ function proml {
   local     DEFAULT="\[\033[0m\]"
 
   if [[ $(uname) == "Darwin" ]]; then
-    PS1="💻 $BLUE\$(parse_git_branch)$GREEN:\w\[\033[01;35m\]$ $DEFAULT"
+    PS1="LOCAL$BLUE\$(parse_git_branch)$GREEN:\w\[\033[01;35m\]$ $DEFAULT"
   else
-    PS1="🌎$BLUE\$(parse_git_branch)$GREEN:\w\[\033[01;35m\]$ $DEFAULT"
+    PS1="$BLUE\$(parse_git_branch)$GREEN:\w\[\033[01;35m\]$ $DEFAULT"
   fi
 }
 proml
