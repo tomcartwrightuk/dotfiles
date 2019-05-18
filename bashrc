@@ -48,7 +48,7 @@ append_path_if_present /usr/local/go/bin/
 # Other paths #
 ###############
 
-source_if_present bash_aliases
+source_if_present ~/.bash_aliases
 export GOPATH=$HOME/code/go
 export GOROOT=/usr/local/go
 export PGHOST=localhost
