@@ -88,11 +88,7 @@ function proml {
   local  LIGHT_GRAY="\[\033[0;37m\]"
   local     DEFAULT="\[\033[0m\]"
 
-  if [[ $(uname) == "Darwin" ]]; then
-    PS1="local $BLUE\$(parse_git_branch)$GREEN\w\[\033[01;35m\]$ $DEFAULT"
-  else
-    PS1="remote $BLUE\$(parse_git_branch)$GREEN \w\[\033[01;35m\]$ $DEFAULT"
-  fi
+  PS1="$USER@$HOSTNAME $BLUE\$(parse_git_branch)$GREEN \w\[\033[01;35m\]$ $DEFAULT"
 }
 proml
 
