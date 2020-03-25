@@ -1,0 +1,18 @@
+{
+    "editor.tabSize": 2,
+    "editor.autoClosingBrackets": "always",
+    "files.autoSave": "off",
+    "editor.rulers": [80,120],
+    "ruby.intellisense": false,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "explorer.confirmDelete": false,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.minimap.enabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+}
