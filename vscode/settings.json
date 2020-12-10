@@ -4,7 +4,7 @@
     "files.autoSave": "off",
     "editor.rulers": [80,120],
     "ruby.intellisense": false,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "explorer.confirmDelete": false,
