@@ -155,8 +155,10 @@ dev_server_ip() {
 }
 
 if [[ $(uname) == "Darwin" ]]; then
-  alias vi="mvim -v"
-  alias vim="mvim -v"
+  if command_exists mvim; then
+    alias vi="mvim -v"
+    alias vim="mvim -v"
+  fi
   if command_exists gcloud; then
     alias moshdev='mosh -p 60000 tecartwright@$(dev_server_ip)'
     alias sshbox='ssh tecartwright@$(dev_server_ip)'
@@ -197,7 +199,7 @@ export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 export HISTTIMEFORMAT="%d/%m/%y %T "
-shopt -s histappend                      # append to history, don't overwrite it
+# shopt -s histappend                      # append to history, don't overwrite it
 
 # Restart postgres after crash
 pg_reboot() {
@@ -215,3 +217,5 @@ if command_exists rbenv; then
 fi
 alias sshbast="ssh -F /Users/$USER/.ssh/bastion_config"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
