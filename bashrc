@@ -41,7 +41,7 @@ append_path_if_present /usr/local/sbin
 append_path_if_present /opt/local/sbin
 append_path_if_present /usr/local/bin
 append_path_if_present "$HOME/code/go/bin"
-append_path_if_present ~/Library/Python/2.7/bin
+append_path_if_present /Users/tom/Library/Python/3.8/bin
 append_path_if_present /usr/local/go/bin/
 
 ###############
@@ -55,6 +55,7 @@ export PGHOST=localhost
 export MAGICK_HOME="$HOME/bin/ImageMagick-7.0.3"
 export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
 export VAGRANT_DEFAULT_PROVIDER="virtualbox"
+export BASH_SILENCE_DEPRECATION_WARNING=1 # mac default is zsh. This turns of warning about that
 
 # Set colours to xterm-256 when using tmux
 case "$TERM" in
@@ -219,3 +220,14 @@ alias sshbast="ssh -F /Users/$USER/.ssh/bastion_config"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tom/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/tom/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tom/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/tom/Downloads/google-cloud-sdk/completion.bash.inc'; fi

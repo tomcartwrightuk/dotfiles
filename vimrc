@@ -13,8 +13,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'rentalcustard/pbcopy.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'ervandew/supertab'
-Plugin 'Trevoke/ultisnips-rspec'
-Plugin 'SirVer/ultisnips'
 Plugin 'rking/ag.vim'
 Plugin 'Chun-Yang/vim-action-ag'
 Plugin 'alvan/vim-closetag'
@@ -191,7 +189,7 @@ else
   set shiftwidth=4 "indent width for autoindent
 endif
 
-" Testing!
+" Testing and debugging
 nnoremap <F6> :execute "Dispatch ".b:dispatch.":".line(".")<CR>
 nnoremap <F7> :execute "Focus ".b:dispatch<CR>
 nnoremap <F8> :Focus!<CR>
@@ -204,12 +202,27 @@ augroup dispatchsetup
   autocmd BufNewFile,BufRead *_spec.js let b:dispatch = 'jasmine-node %'
 augroup END
 
+function! FilterSpec()
+  let ln = line(".")
+  execute ln . "s/ do/, focus: true do/g"
+endfunction
+
+function! UnfilterSpec()
+  let ln = line(".")
+  execute ln . "s/, focus: true / /g"
+endfunction
+
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>fs :call FilterSpec()<CR>
+map <Leader>us :call UnfilterSpec()<CR>
 " Add .only to a mocha test
 nnoremap <Leader>mo :MochaOnlyToggle<CR>
+
+" pry
+let @g = "Orequire \"pry\"; binding.pry"
 
 " Moving lines up and down alt-j and alt-k
 nnoremap ∆ :m .+1<CR>==
@@ -261,9 +274,6 @@ nnoremap <Leader>tc :EnTypeCheck<CR>
 au FileType scala nnoremap <Leader>df :EnDeclaration<CR>
 au FileType scala nnoremap <Leader>ti :EnInspectType<CR>
 au FileType go nnoremap <Leader>df :GoDef<CR>
-
-"Gitlab support
-let g:fugitive_gitlab_domains = ['https://gitlab.workwithcadence.com']
 
 " Make ctrl p faster by delegating to ag
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
