@@ -93,6 +93,28 @@ function proml {
 }
 proml
 
+function tmux-split-win() {
+  local split_type=$1
+  local command=$2
+
+  # Split the window and run the command Keep the window around when the
+  # command exists and insert the command into it's history
+  tmux split-window -"$split_type" -c '#{pane_current_path}' "$command; bash --rcfile <(echo '. ~/.bashrc; history -s $command')"
+}
+
+function t-clone-cmd() {
+  num_clones=$1
+  cmd=$2
+
+  for (( i = 0; i < $num_clones-1; i++ )); do
+    tmux-split-win h "$cmd"
+    tmux select-layout tiled
+  done
+
+  tmux select-layout tiled
+  command $cmd
+}
+
 # BASH ALIASES
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
