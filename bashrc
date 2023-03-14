@@ -62,15 +62,10 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
-# Node setup
-export NVM_DIR=~/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
 # Machine setup
 export EDITOR="vi"
 export PERL_MB_OPT="--install_base \"/Users/$USER/perl5\"";
 export PERL_MM_OPT="INSTALL_BASE=/Users/$USER/perl5";
-export NVM_DIR="/Users/$USER/.nvm"
 
 # PROMPT SETUP
 function parse_git_branch {
@@ -245,11 +240,14 @@ alias sshbast="ssh -F /Users/$USER/.ssh/bastion_config"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-source "$HOME/.cargo/env"
-. "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/tom/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/tom/Downloads/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/tom/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/tom/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -66,6 +66,8 @@ set winheight=30
 set winminheight=5
 set winwidth=80
 set winminwidth=30
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
 
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/UltiSnips"
 let g:UltiSnipsExpandTrigger="<tab>"
