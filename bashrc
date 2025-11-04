@@ -152,6 +152,7 @@ alias hidden_files="defaults write com.apple.finder AppleShowAllFiles TRUE && ki
 alias hidden_files_off="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 alias weather="curl -4 http://wttr.in/Bristol"
 alias h="heroku"
+alias vi="vim"
 
 # Programming commands
 alias be='bundle exec'
@@ -165,6 +166,9 @@ alias kubeps="kubectl get pod --all-namespaces"
 alias kubep='kubectl --context=$PROD_CON'
 alias kubeci='kubectl --context=$CI_CON'
 alias kube='kubectl'
+
+# Docker alias
+alias dc="docker compose"
 
 # MAC SPECIFIC
 dev_server_ip() {
@@ -243,11 +247,14 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # source "$HOME/.cargo/env"
 # . "$HOME/.cargo/env"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tom/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/tom/Downloads/google-cloud-sdk/path.bash.inc'; fi
+# Updates PATH for the Google Cloud SDK and enabls shell command completion for gcloud.
+if [ -f "$HOME/code/repos/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/code/repos/google-cloud-sdk/path.bash.inc"; fi
+if [ -f "$HOME/code/repos/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/code/repos/google-cloud-sdk/completion.bash.inc"; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tom/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/tom/Downloads/google-cloud-sdk/completion.bash.inc'; fi
-
+# Enable nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Setup bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
